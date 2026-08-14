@@ -1,6 +1,4 @@
-# tooling / session artifacts (never publish)
+# Local tooling and preview artifacts
 .gstack/
 **/.gstack/
-*.log
-.DS_Store
-Thumbs.db
+local-preview*.png

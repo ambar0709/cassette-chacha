@@ -3,31 +3,43 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cassette Chacha — Deluxe Saloon, Horn OK Please, Chai Wala & more desi music players</title>
-<meta name="description" content="Cassette Chacha is a catalog of fun desi web music players in one place — Deluxe Saloon (saloon.wtf), Horn OK Please, Raju Mistri, Chai Wala, Deluxe Dhaba, Bus Driver and Mehfil. 90s Bollywood, qawwali and highway tapes. Pick a station and vibe." />
+<title>Cassette Chacha — यहाँ सभी प्रकार की रिकॉर्डिंग मिलती हैं</title>
+<meta name="description" content="Cassette Chacha brings Deluxe Saloon, Horn OK Please, Raju Mistri, Chai Wala, Deluxe Dhaba, Bus Driver and Mehfil together in one nostalgic desi music collection." />
 <meta name="keywords" content="saloon.wtf, deluxe saloon, hornokplease, horn ok please, rajumistri, raju mistri, chaiwala.live, chai wala, deluxedhaba, deluxe dhaba, busdriver.wtf, bus driver, mehfil.wtf, mehfil, 90s bollywood music player, desi music website, qawwali player, barber shop songs, truck music, cassette chacha" />
 <meta name="author" content="Cassette Chacha" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://ambar0709.github.io/cassette-chacha/" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<link rel="preload" as="image" href="assets/cassette-shop-bg.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/cassette-chacha-wordmark.svg" />
 <meta name="theme-color" content="#0c0805" />
 <!-- Share preview -->
 <meta property="og:site_name" content="Cassette Chacha" />
-<meta property="og:title" content="Cassette Chacha — a catalog of fun desi music players" />
-<meta property="og:description" content="Deluxe Saloon, Horn OK Please, Raju Mistri, Chai Wala, Deluxe Dhaba, Bus Driver and Mehfil — all the fun desi web music players, on one stage." />
+<meta property="og:title" content="Cassette Chacha — यहाँ सभी प्रकार की रिकॉर्डिंग मिलती हैं" />
+<meta property="og:description" content="Deluxe Saloon, Horn OK Please, Raju Mistri, Chai Wala, Deluxe Dhaba, Bus Driver और Mehfil — सात देसी म्यूज़िक प्लेयर, एक ही जगह।" />
 <meta property="og:url" content="https://ambar0709.github.io/cassette-chacha/" />
-<meta property="og:image" content="https://ambar0709.github.io/cassette-chacha/assets/saloon.png" />
+<meta property="og:image" content="https://ambar0709.github.io/cassette-chacha/assets/og-cassette-chacha-v2.jpg" />
+<meta property="og:image:secure_url" content="https://ambar0709.github.io/cassette-chacha/assets/og-cassette-chacha-v2.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Cassette Chacha logo over an old Indian cassette shop with featured desi music players" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Cassette Chacha — a catalog of fun desi music players" />
-<meta name="twitter:description" content="Deluxe Saloon, Horn OK Please, Chai Wala, Bus Driver, Mehfil and more — all on one stage." />
-<meta name="twitter:image" content="https://ambar0709.github.io/cassette-chacha/assets/saloon.png" />
+<meta name="twitter:title" content="Cassette Chacha — यहाँ सभी प्रकार की रिकॉर्डिंग मिलती हैं" />
+<meta name="twitter:description" content="सात देसी म्यूज़िक प्लेयर, एक पुरानी कैसेट की दुकान और चाचा का पूरा कलेक्शन।" />
+<meta name="twitter:image" content="https://ambar0709.github.io/cassette-chacha/assets/og-cassette-chacha-v2.jpg" />
+<meta name="twitter:image:alt" content="Cassette Chacha logo over an old Indian cassette shop with featured desi music players" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Cassette Chacha",
-  "alternateName": "Cassette Chacha — desi music players",
+  "alternateName": "Cassette Chacha — यहाँ सभी प्रकार की रिकॉर्डिंग मिलती हैं",
   "url": "https://ambar0709.github.io/cassette-chacha/",
+  "image": "https://ambar0709.github.io/cassette-chacha/assets/og-cassette-chacha-v2.jpg",
   "description": "A hand-picked catalog of fun desi web music players — 90s Bollywood, qawwali and highway tapes — playable in one place.",
   "keywords": "desi music players, 90s Bollywood, saloon.wtf, hornokplease, rajumistri, chaiwala, deluxedhaba, busdriver, mehfil",
   "mainEntity": {
@@ -51,18 +63,20 @@
     --bg:#0c0805; --card:#1a1109; --ink:#fbf3e6; --ink-dim:#c8b79b; --ink-faint:#8c7a5f;
     --line:#3a2a17; --shadow:0 24px 60px -24px rgba(0,0,0,.85);
     --font:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+    --font-hi:"Nirmala UI","Mangal","Noto Sans Devanagari",sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;height:100%}
   body{font-family:var(--font);color:var(--ink);background:var(--bg);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
 
   /* ---------- Living background ---------- */
-  #bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--bg);transform:scale(calc(1 + var(--level)*.06));transition:transform .1s linear}
-  #bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;transition:background 1.2s ease}
+  #bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background-color:var(--bg);background-image:url("assets/cassette-shop-bg.webp");background-size:cover;background-position:center top;background-repeat:no-repeat;transform:scale(calc(1 + var(--level)*.025));transition:transform .1s linear}
+  #bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.18;mix-blend-mode:soft-light;transition:background 1.2s ease}
   #bg .b1{width:60vw;height:60vw;left:-10vw;top:-15vw;background:radial-gradient(circle at 30% 30%,var(--a2),transparent 65%);animation:drift1 22s ease-in-out infinite}
   #bg .b2{width:55vw;height:55vw;right:-12vw;top:-8vw;background:radial-gradient(circle at 60% 40%,var(--a3),transparent 62%);animation:drift2 26s ease-in-out infinite}
   #bg .b3{width:65vw;height:65vw;left:15vw;bottom:-25vw;background:radial-gradient(circle at 50% 50%,var(--a1),transparent 60%);animation:drift3 30s ease-in-out infinite}
-  #bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%,transparent 40%,rgba(6,4,2,.55) 100%)}
+  #bg::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,5,3,.2),rgba(8,5,3,.55) 32%,rgba(8,5,3,.58) 68%,rgba(8,5,3,.25));pointer-events:none}
+  #bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,4,2,.08),rgba(6,4,2,.3) 55%,rgba(6,4,2,.72)),radial-gradient(120% 90% at 50% 0%,transparent 32%,rgba(6,4,2,.35) 100%);pointer-events:none}
   #pulse{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 55% at 50% 58%,color-mix(in srgb,var(--accent) 45%,transparent),transparent 70%);opacity:calc(var(--level)*.6);transition:opacity .08s linear}
   @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6vw,4vw) scale(1.12)}}
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-5vw,5vw) scale(.95)}}
@@ -71,23 +85,25 @@
   #fx{position:fixed;inset:0;z-index:70;pointer-events:none}
 
   /* ---------- Header ---------- */
-  header{max-width:1160px;margin:0 auto;padding:56px 24px 18px;text-align:center}
-  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);transition:color 1s ease}
+  header{position:sticky;top:0;z-index:80;padding:8px max(24px,calc((100vw - 1160px)/2 + 24px)) 6px;box-shadow:0 12px 28px -26px rgba(0,0,0,.95);backdrop-filter:blur(8px)}
+  .hero-bar{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}
+  .brand-stack{width:min(68%,700px);min-width:0}
   .eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px}
   .eq i{width:3px;background:var(--accent);border-radius:2px;animation:eq 900ms ease-in-out infinite;transition:background 1s ease}
-  h1{font-size:clamp(40px,8vw,80px);line-height:1;margin:14px 0 12px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(92deg,#fff 8%,var(--a3) 60%,var(--accent) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;transition:background .8s ease}
-  .sub{color:var(--ink-dim);font-size:clamp(15px,2.2vw,19px);max-width:600px;margin:0 auto 18px;line-height:1.55}
-  .controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
+  h1{line-height:0;margin:0;max-width:420px}
+  h1 img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 22px rgba(0,0,0,.42))}
+  .sub{color:#ffdf72;font-family:"Arial Black","Nirmala UI","Mangal",var(--font-hi);font-size:clamp(14px,1.45vw,17px);font-weight:900;max-width:600px;margin:0;line-height:1.25;letter-spacing:.01em;-webkit-text-stroke:.4px #4b170c;text-shadow:2px 2px 0 #7b1c10,0 4px 14px rgba(0,0,0,.95);transform:skewX(-3deg)}
+  .controls{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;align-items:center;flex:0 0 auto;margin-top:4px}
   .ctrl-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-weight:800;font-size:15px;padding:11px 20px;border-radius:999px;border:1px solid transparent;color:#1a1000;background:linear-gradient(92deg,var(--accent),#fff);box-shadow:0 8px 22px -8px color-mix(in srgb,var(--accent) 70%,transparent);transition:transform .15s ease,filter .15s ease}
   .ctrl-btn:hover{transform:translateY(-2px) scale(1.03);filter:brightness(1.05)}
   .ctrl-btn:active{transform:scale(.97)}
-  .resume{display:none;align-items:center;gap:8px;cursor:pointer;font-weight:700;font-size:13.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink-dim)}
+  .resume{display:none;align-items:center;gap:8px;cursor:pointer;font-weight:700;font-size:13.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(12,8,5,.52);color:var(--ink-dim)}
   .resume:hover{color:var(--ink);border-color:#5a4020}
   .resume b{color:var(--accent)}
 
   /* ---------- Gallery ---------- */
-  main{max-width:1160px;margin:0 auto;padding:22px 24px 90px}
-  .grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+  main{position:relative;z-index:10;max-width:1160px;margin:0 auto;padding:10px 24px 90px}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(2,minmax(0,1fr));max-width:780px}
   .card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;border:1px solid var(--line);box-shadow:var(--shadow);transform-style:preserve-3d;transition:transform .25s cubic-bezier(.2,.7,.3,1),box-shadow .25s ease;opacity:0;animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
   @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
   .card .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease}
@@ -107,10 +123,11 @@
   .card .fav.on{color:#ffd85a;background:rgba(0,0,0,.55);text-shadow:0 0 12px rgba(255,200,60,.9)}
 
   /* ---------- Stage ---------- */
-  .stage{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;padding:clamp(8px,1.6vw,20px);background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.4),rgba(4,3,2,.8));backdrop-filter:blur(8px)}
+  .stage{position:fixed;inset:0;z-index:160;display:none;flex-direction:column;padding:clamp(8px,1.6vw,20px);background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.4),rgba(4,3,2,.8));backdrop-filter:blur(8px)}
   .stage.open{display:flex;animation:fadeIn .35s ease}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .stage-bar{display:flex;align-items:center;gap:12px;padding:4px 6px 12px}
+  .stage-logo{flex:0 0 auto;display:block;width:230px;max-width:24vw;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
   .vinyl{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#111 0 2px,#1e1e1e 2px 4px);position:relative;box-shadow:0 3px 10px rgba(0,0,0,.5)}
   .vinyl::after{content:"";position:absolute;inset:38%;border-radius:50%;background:var(--accent);transition:background 1s ease}
   .stage.playing .vinyl{animation:spin 3.2s linear infinite}
@@ -152,8 +169,6 @@
 
   @keyframes eq{0%,100%{height:20%}50%{height:100%}}
   .eq i:nth-child(1){animation-delay:0ms}.eq i:nth-child(2){animation-delay:150ms}.eq i:nth-child(3){animation-delay:300ms}.eq i:nth-child(4){animation-delay:450ms}.eq i:nth-child(5){animation-delay:220ms}
-  body.mic-on .eq i{animation:none}
-
   footer{max-width:1160px;margin:0 auto;padding:0 24px 54px;text-align:center;color:var(--ink-faint);font-size:13px;line-height:1.9}
   footer a{color:var(--accent);text-decoration:none;font-weight:700;transition:color .2s ease}
   footer a:hover{filter:brightness(1.15);text-decoration:underline}
@@ -161,7 +176,27 @@
   #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:200;background:#1a120a;color:var(--ink);border:1px solid var(--line);padding:11px 18px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;max-width:90vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  @media (max-width:560px){header{padding-top:36px}.grid{grid-template-columns:1fr}.stage-bar .s-host,.hint-pill{display:none}}
+  @media (max-width:760px){
+    .brand-stack{width:auto;flex:1}
+    .controls{gap:8px;margin-top:2px}
+    .ctrl-btn,.resume{width:42px;height:42px;justify-content:center;padding:0;font-size:18px}
+    .btn-label,.resume-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .stage-bar{flex-wrap:wrap;gap:8px}
+    .stage-logo{width:150px;max-width:34vw}
+    .stage-bar .now{flex:1 1 220px;order:10}
+    .stage-bar .spacer,.hint-pill{display:none}
+    .s-btn{padding:8px 10px}
+    .grid{grid-template-columns:1fr;max-width:520px}
+  }
+  @media (max-width:560px){
+    #bg{background-position:46% top}
+    header{padding:7px 14px 5px}
+    .hero-bar{gap:8px}
+    h1{max-width:220px}
+    .sub{font-size:13px;line-height:1.3;margin-top:2px;-webkit-text-stroke:.25px #4b170c;text-shadow:1.5px 1.5px 0 #7b1c10,0 3px 12px rgba(0,0,0,.95)}
+    .stage-logo{width:132px;max-width:34vw}
+    .stage-bar .s-host{display:none}
+  }
   @media (prefers-reduced-motion:reduce){#bg .blob,.eq i,.card{animation:none}.card{opacity:1}}
 </style>
 </head>
@@ -172,12 +207,15 @@
 <canvas id="fx"></canvas>
 
 <header>
-  <span class="kicker"><span class="eq"><i style="height:40%"></i><i style="height:90%"></i><i style="height:60%"></i><i style="height:100%"></i></span> chacha's tape collection</span>
-  <h1>Cassette Chacha</h1>
-  <p class="sub">Seven gloriously fun desi music players, one stage. Pick a station, then switch anytime — the vibe changes with it.</p>
-  <div class="controls">
-    <button class="ctrl-btn" id="surprise">🎲 Surprise me</button>
-    <button class="resume" id="resume"></button>
+  <div class="hero-bar">
+    <div class="brand-stack">
+      <h1><img src="assets/cassette-chacha-wordmark.svg" width="820" height="140" alt="Cassette Chacha" /></h1>
+      <p class="sub" lang="hi">यहाँ सभी प्रकार की रिकॉर्डिंग मिलती हैं</p>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn" id="surprise" aria-label="Surprise me"><span aria-hidden="true">🎲</span><span class="btn-label">Surprise me</span></button>
+      <button class="resume" id="resume"></button>
+    </div>
   </div>
 </header>
 
@@ -201,7 +239,6 @@
 </noscript>
 
 <footer>
-  Curated for the vibes · ⭐ save favourites · 🎲 surprise · 🎤 react to sound · 🔗 hit <b>Share</b> in the player to copy a station's link<br/>
   <a id="footAdd" href="#" target="_blank" rel="noopener">➕ Suggest a cassette</a> ·
   <a id="footIssue" href="#" target="_blank" rel="noopener">🐛 Issue / feature request</a>
 </footer>
@@ -209,6 +246,7 @@
 <!-- Stage -->
 <div class="stage" id="stage" role="dialog" aria-modal="true" aria-label="Music player">
   <div class="stage-bar">
+    <img class="stage-logo" src="assets/cassette-chacha-wordmark.svg" width="820" height="140" alt="Cassette Chacha" />
     <div class="vinyl" aria-hidden="true"></div>
     <div class="now">
       <span class="eq" id="stageEq" aria-hidden="true"><i style="height:40%"></i><i style="height:100%"></i><i style="height:65%"></i><i style="height:90%"></i><i style="height:50%"></i></span>
@@ -217,7 +255,6 @@
     </div>
     <span class="hint-pill" id="sHint"></span>
     <span class="spacer"></span>
-    <button class="s-btn" id="micBtn" title="React to sound (uses your microphone, on-device only)">🎤 Sound-reactive</button>
     <button class="s-btn" id="sSurprise" title="Jump to a random station">🎲</button>
     <button class="s-btn" id="sShare" title="Copy this station's link">🔗 Share</button>
     <a class="s-btn" id="sOpen" target="_blank" rel="noopener">Open ↗</a>
@@ -234,25 +271,25 @@
 
 <script>
   const SITES = [
-    { id:"saloon", title:"Deluxe Saloon", host:"saloon.wtf", url:"https://saloon.wtf/", img:"assets/saloon.png",
+    { id:"saloon", title:"Deluxe Saloon", host:"saloon.wtf", url:"https://saloon.wtf/", img:"assets/saloon.webp",
       tags:["90s Bollywood","Barber-shop","Non-stop"], hint:"👆 tap to start the shave-shop playlist",
       theme:["#5f160c","#b3202a","#f0b429"], accent:"#f5b544", fx:"petal", kit:"tv" },
-    { id:"raju", title:"Raju Mistri Ki Playlist", host:"rajumistri.online", url:"https://rajumistri.online/", img:"assets/raju.png",
+    { id:"raju", title:"Raju Mistri Ki Playlist", host:"rajumistri.online", url:"https://rajumistri.online/", img:"assets/raju.webp",
       tags:["90s Hindi","Live listeners","Chai-break"], hint:"🔊 starts muted — tap play once to unmute",
       theme:["#5a0a0e","#d81f2a","#ff5a4d"], accent:"#ff6a5a", fx:"note", kit:"tv" },
-    { id:"horn", title:"Horn OK Please", host:"hornokplease.wtf", url:"https://hornokplease.wtf/", img:"assets/horn.png",
+    { id:"horn", title:"Horn OK Please", host:"hornokplease.wtf", url:"https://hornokplease.wtf/", img:"assets/horn.webp",
       tags:["Road trip","Truck art","Shuffle"], hint:"👆 tap Start Engine, then Press The Horn",
       theme:["#6e3206","#ff7a1a","#f5b544"], accent:"#ff9a3c", fx:"dust", kit:"windshield" },
-    { id:"busdriver", title:"Bus Driver", host:"busdriver.wtf", url:"https://busdriver.wtf/", img:"assets/busdriver.png",
+    { id:"busdriver", title:"Bus Driver", host:"busdriver.wtf", url:"https://busdriver.wtf/", img:"assets/busdriver.webp",
       tags:["80s & 90s","Night service","Highway"], hint:"👆 press play — tapes from the highway",
       theme:["#5a2e0c","#c56a1e","#f0a94a"], accent:"#f0a94a", fx:"dust", kit:"windshield" },
-    { id:"dhaba", title:"Deluxe Dhaba", host:"deluxedhaba.netlify.app", url:"https://deluxedhaba.netlify.app/", img:"assets/dhaba.png",
+    { id:"dhaba", title:"Deluxe Dhaba", host:"deluxedhaba.netlify.app", url:"https://deluxedhaba.netlify.app/", img:"assets/dhaba.webp",
       tags:["Cinematic","Rainy / Night","Custom player"], hint:"👆 select a track, then hit play",
       theme:["#5c1a13","#c0392b","#3d7a4a"], accent:"#e0533f", fx:"rain", kit:"tv" },
-    { id:"chaiwala", title:"Chai Wala", host:"chaiwala.live", url:"https://chaiwala.live/", img:"assets/chaiwala.png",
+    { id:"chaiwala", title:"Chai Wala", host:"chaiwala.live", url:"https://chaiwala.live/", img:"assets/chaiwala.webp",
       tags:["Chai stall","Ambient","Playlist"], hint:"🍵 tap play to pour the chai",
       theme:["#3f2c12","#8a5a2c","#c99a5c"], accent:"#d0a15c", fx:"steam", kit:"tv" },
-    { id:"mehfil", title:"Mehfil", host:"mehfil.wtf", url:"https://mehfil.wtf/", img:"assets/mehfil.png",
+    { id:"mehfil", title:"Mehfil", host:"mehfil.wtf", url:"https://mehfil.wtf/", img:"assets/mehfil.webp",
       tags:["Qawwali","Ghazal","Courtyard"], hint:"👆 press play for the qawwali mehfil",
       theme:["#5a1418","#a8324a","#d98a4a"], accent:"#e0a24a", fx:"note", kit:"arch" },
   ];
@@ -366,7 +403,12 @@
   // ---------- resume pill ----------
   function updateResume(){
     const last=localStorage.getItem(LASTKEY); const s=SITES.find(x=>x.id===last);
-    if(s && !stageOpen){resumeBtn.style.display="inline-flex";resumeBtn.innerHTML=`▶ Resume <b>${s.title}</b>`;resumeBtn.onclick=()=>openStage(s.id);}
+    if(s && !stageOpen){
+      resumeBtn.style.display="inline-flex";
+      resumeBtn.setAttribute("aria-label",`Resume ${s.title}`);
+      resumeBtn.innerHTML=`<span aria-hidden="true">▶</span><span class="resume-label">Resume <b>${s.title}</b></span>`;
+      resumeBtn.onclick=()=>openStage(s.id);
+    }
     else resumeBtn.style.display="none";
   }
 
@@ -395,37 +437,6 @@
     card.addEventListener("mousemove",e=>{const r=card.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5;const py=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(900px) rotateY(${px*8}deg) rotateX(${-py*8}deg) translateY(-4px)`;});
     card.addEventListener("mouseleave",()=>{card.style.transform="";});
   });
-
-  // ---------- microphone reactive ----------
-  const micBtn=$("#micBtn"); let micCtx,micAnalyser,micData,micRAF,micStream,micOn=false;
-  async function toggleMic(){
-    if(micOn){stopMic();return;}
-    try{micStream=await navigator.mediaDevices.getUserMedia({audio:true});}
-    catch(err){micBtn.textContent="🎤 mic blocked";setTimeout(()=>micBtn.textContent="🎤 Sound-reactive",2000);return;}
-    micCtx=new (window.AudioContext||window.webkitAudioContext)();
-    const src=micCtx.createMediaStreamSource(micStream);
-    micAnalyser=micCtx.createAnalyser();micAnalyser.fftSize=64;micAnalyser.smoothingTimeConstant=.75;
-    src.connect(micAnalyser);micData=new Uint8Array(micAnalyser.frequencyBinCount);
-    micOn=true;document.body.classList.add("mic-on");micBtn.classList.add("on");micBtn.textContent="🎤 reacting";
-    loopMic();
-  }
-  function loopMic(){
-    micRAF=requestAnimationFrame(loopMic);
-    micAnalyser.getByteFrequencyData(micData);
-    let sum=0;for(let i=0;i<micData.length;i++)sum+=micData[i];
-    const level=Math.min(1,(sum/micData.length)/120);
-    document.documentElement.style.setProperty("--level",level.toFixed(3));
-    const bins=[2,5,9,14,20];
-    stageEqBars.forEach((b,i)=>{const v=micData[bins[i]]/255;b.style.height=(15+v*85)+"%";});
-  }
-  function stopMic(){
-    micOn=false;cancelAnimationFrame(micRAF);
-    if(micStream)micStream.getTracks().forEach(t=>t.stop());
-    if(micCtx)micCtx.close();
-    document.body.classList.remove("mic-on");micBtn.classList.remove("on");micBtn.textContent="🎤 Sound-reactive";
-    document.documentElement.style.setProperty("--level","0");stageEqBars.forEach(b=>b.style.height="");
-  }
-  micBtn.addEventListener("click",toggleMic);
 
   // ---------- particles ----------
   const fx=$("#fx"),ctx=fx.getContext("2d");let W,H,DPR=Math.min(2,devicePixelRatio||1);
