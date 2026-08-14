@@ -6,6 +6,7 @@ const APP_SHELL = [
   "assets/cassette-chacha-wordmark.svg",
   "assets/cassette-shop-bg.webp",
   "assets/favicon-32.png",
+  "assets/favicon-192.png",
   "assets/favicon-512.png",
   "assets/apple-touch-icon.png",
   "assets/saloon.webp",
