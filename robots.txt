@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ambar0709.github.io/cassette-chacha/sitemap.xml
