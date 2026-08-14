@@ -126,25 +126,36 @@
   /* ---------- Stage ---------- */
   .stage{position:fixed;inset:0;z-index:160;display:none;flex-direction:column;padding:clamp(8px,1.6vw,20px);background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.4),rgba(4,3,2,.8));backdrop-filter:blur(8px)}
   .stage.open{display:flex;animation:fadeIn .35s ease}
+  .stage.minimized{inset:auto 18px 18px auto;width:min(360px,calc(100vw - 28px));height:auto;padding:0;border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);border-radius:16px;background:rgba(10,7,4,.88);box-shadow:0 18px 48px -18px rgba(0,0,0,.95);backdrop-filter:blur(12px);overflow:hidden}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   .stage-bar{display:flex;align-items:center;gap:12px;padding:4px 6px 12px}
+  .stage.minimized .stage-bar{padding:10px;gap:9px;cursor:pointer}
   .stage-logo{flex:0 0 auto;display:block;width:230px;max-width:24vw;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+  .stage.minimized .stage-logo{width:112px;max-width:34vw}
   .vinyl{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#111 0 2px,#1e1e1e 2px 4px);position:relative;box-shadow:0 3px 10px rgba(0,0,0,.5)}
+  .stage.minimized .vinyl{width:28px;height:28px}
   .vinyl::after{content:"";position:absolute;inset:38%;border-radius:50%;background:var(--accent);transition:background 1s ease}
   .stage.playing .vinyl{animation:spin 3.2s linear infinite}
   .stage-bar .now{display:flex;align-items:center;gap:10px;min-width:0}
   .stage-bar .eq{height:20px}.stage-bar .eq i{width:4px}
   .stage-bar .s-title{font-weight:800;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stage.minimized .stage-bar .s-title{font-size:14px}
   .stage-bar .s-host{font-size:12px;color:var(--ink-faint);font-family:ui-monospace,monospace}
+  .stage.minimized .stage-bar .s-host{display:none}
   .stage-bar .spacer{flex:1}
   .s-btn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;text-decoration:none;padding:9px 14px;border-radius:11px;font-size:13.5px;font-weight:700;border:1px solid var(--line);color:var(--ink-dim);background:rgba(255,255,255,.04);transition:.15s ease}
   .s-btn:hover{color:var(--ink);border-color:#5a4020}
   .s-btn.close{color:#1a1000;background:linear-gradient(92deg,var(--accent),#fff);border-color:transparent}
   .s-btn.on{color:#1a1000;background:linear-gradient(92deg,#2fd6a0,#bff7e4);border-color:transparent}
+  .stage.minimized .s-btn:not(.restore):not(.close){display:none}
+  .stage.minimized .s-btn{padding:8px 10px;font-size:13px}
+  .stage:not(.minimized) .s-btn.restore{display:none}
   .hint-pill{font-size:12px;color:var(--accent);font-weight:700;padding:6px 12px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:999px;background:color-mix(in srgb,var(--accent) 10%,transparent);white-space:nowrap;animation:pulseHint 1.7s ease-in-out infinite}
+  .stage.minimized .hint-pill{display:none}
   @keyframes pulseHint{0%,100%{opacity:.6}50%{opacity:1}}
   /* ----- Full-width player ----- */
   .frame-wrap{flex:1;position:relative;min-height:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:var(--shadow)}
+  .stage.minimized .frame-wrap,.stage.minimized .dock{display:none}
   .frame-wrap iframe{width:100%;height:100%;border:0;display:block;animation:fadeIn .5s ease}
   .frame-loader{position:absolute;inset:0;display:grid;place-items:center;background:#0a0705;color:var(--ink-faint);font-size:14px;z-index:2;transition:opacity .4s ease}
   .frame-loader.hide{opacity:0;pointer-events:none}
@@ -189,6 +200,8 @@
     .stage-bar .now{flex:1 1 220px;order:10}
     .stage-bar .spacer,.hint-pill{display:none}
     .s-btn{padding:8px 10px}
+    #sMinimize{font-size:0}
+    #sMinimize::before{content:"▁";font-size:16px}
     .grid{grid-template-columns:1fr;max-width:520px}
   }
   @media (max-width:560px){
@@ -198,6 +211,7 @@
     h1{max-width:220px}
     .sub{font-size:13px;line-height:1.3;margin-top:2px;-webkit-text-stroke:.25px #4b170c;text-shadow:1.5px 1.5px 0 #7b1c10,0 3px 12px rgba(0,0,0,.95)}
     .stage-logo{width:132px;max-width:34vw}
+    .stage.minimized{inset:auto 10px 10px 10px;width:auto}
     .stage-bar .s-host{display:none}
   }
   @media (prefers-reduced-motion:reduce){#bg .blob,.eq i,.card{animation:none}.card{opacity:1}}
@@ -262,6 +276,8 @@
     <button class="s-btn" id="sSurprise" title="Jump to a random station">🎲</button>
     <button class="s-btn" id="sShare" title="Copy this station's link">🔗 Share</button>
     <a class="s-btn" id="sOpen" target="_blank" rel="noopener">Open ↗</a>
+    <button class="s-btn" id="sMinimize" title="Minimize player">▁ Minimize</button>
+    <button class="s-btn restore" id="sRestore" title="Restore player">▣</button>
     <button class="s-btn close" id="sClose">✕ Close</button>
   </div>
   <div class="frame-wrap">
@@ -303,7 +319,7 @@
   const sFrame=$("#sFrame"), sTitle=$("#sTitle"), sHost=$("#sHost"), sOpen=$("#sOpen"), sHint=$("#sHint"), sLoader=$("#sLoader");
   const resumeBtn=$("#resume");
   const stageEqBars=[...document.querySelectorAll("#stageEq i")];
-  let current=null, stageOpen=false, reeling=false;
+  let current=null, stageOpen=false, stageMinimized=false, reeling=false;
 
   // ---------- share + submit (GitHub) ----------
   // 👉 Set this to your repo ("owner/repo") to enable the Suggest / Issue links:
@@ -412,11 +428,25 @@
   }
   sFrame.addEventListener("load",()=>{if(sFrame.src&&sFrame.src!=="about:blank")sLoader.classList.add("hide");});
 
-  function openStageShell(){stage.classList.add("open");document.body.style.overflow="hidden";stageOpen=true;}
+  function openStageShell(){stage.classList.add("open");stage.classList.remove("minimized");document.body.style.overflow="hidden";stageOpen=true;stageMinimized=false;}
   function openStage(id){openStageShell();tune(id);}
+  function minimizeStage(){
+    if(!stageOpen) return;
+    stage.classList.add("minimized");
+    document.body.style.overflow="";
+    stageMinimized=true;
+    updateResume();
+  }
+  function restoreStage(){
+    if(!stageOpen) return;
+    stage.classList.remove("minimized");
+    document.body.style.overflow="hidden";
+    stageMinimized=false;
+    updateResume();
+  }
   function closeStage(){
-    stage.classList.remove("open","playing");sFrame.src="about:blank";document.body.style.overflow="";
-    stageOpen=false;current=null;setEmitter(null);history.replaceState(null,"","#");setTheme(SITES[0]);updateResume();
+    stage.classList.remove("open","playing","minimized");sFrame.src="about:blank";document.body.style.overflow="";
+    stageOpen=false;stageMinimized=false;current=null;setEmitter(null);history.replaceState(null,"","#");setTheme(SITES[0]);updateResume();
   }
 
   // ---------- surprise (slot-machine reel) ----------
@@ -439,11 +469,11 @@
   // ---------- resume pill ----------
   function updateResume(){
     const last=localStorage.getItem(LASTKEY); const s=SITES.find(x=>x.id===last);
-    if(s && !stageOpen){
+    if(s && (!stageOpen || stageMinimized)){
       resumeBtn.style.display="inline-flex";
-      resumeBtn.setAttribute("aria-label",`Resume ${s.title}`);
-      resumeBtn.innerHTML=`<span aria-hidden="true">▶</span><span class="resume-label">Resume <b>${s.title}</b></span>`;
-      resumeBtn.onclick=()=>openStage(s.id);
+      resumeBtn.setAttribute("aria-label",stageMinimized?`Restore ${s.title}`:`Resume ${s.title}`);
+      resumeBtn.innerHTML=`<span aria-hidden="true">▶</span><span class="resume-label">${stageMinimized?"Restore":"Resume"} <b>${s.title}</b></span>`;
+      resumeBtn.onclick=()=>stageMinimized?restoreStage():openStage(s.id);
     }
     else resumeBtn.style.display="none";
   }
@@ -455,13 +485,16 @@
     const c=e.target.closest(".card"); if(c) openStage(c.dataset.id);
   });
   dock.addEventListener("click",e=>{const d=e.target.closest(".dock-item");if(d&&d.dataset.id!==current)tune(d.dataset.id);});
+  $(".stage-bar").addEventListener("click",e=>{if(stageMinimized&&!e.target.closest(".s-btn"))restoreStage();});
+  $("#sMinimize").addEventListener("click",minimizeStage);
+  $("#sRestore").addEventListener("click",restoreStage);
   $("#sClose").addEventListener("click",closeStage);
   $("#surprise").addEventListener("click",surprise);
   $("#sSurprise").addEventListener("click",surprise);
   document.addEventListener("keydown",e=>{
     if(e.key.toLowerCase()==="s"&&!stageOpen){surprise();return;}
     if(!stageOpen) return;
-    if(e.key==="Escape") closeStage();
+    if(e.key==="Escape"){stageMinimized?restoreStage():closeStage();}
     if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const i=SITES.findIndex(x=>x.id===current);const n=(i+(e.key==="ArrowRight"?1:-1)+SITES.length)%SITES.length;tune(SITES[n].id);}
   });
 
