@@ -1,0 +1,6 @@
+# tooling / session artifacts (never publish)
+.gstack/
+**/.gstack/
+*.log
+.DS_Store
+Thumbs.db
