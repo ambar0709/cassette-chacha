@@ -177,7 +177,6 @@
   <p class="sub">Seven gloriously fun desi music players, one stage. Pick a station, then switch anytime — the vibe changes with it.</p>
   <div class="controls">
     <button class="ctrl-btn" id="surprise">🎲 Surprise me</button>
-    <a class="resume" id="addJuke" href="#" target="_blank" rel="noopener" style="display:inline-flex">➕ Add a cassette</a>
     <button class="resume" id="resume"></button>
   </div>
 </header>
@@ -272,7 +271,7 @@
   const ghIssue=(title,body,labels)=>`https://github.com/${REPO}/issues/new?labels=${encodeURIComponent(labels)}&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
   const addUrl=ghIssue("New cassette: <name>","**Cassette URL:**\n**Name:**\n**Vibe / why it belongs here:**\n","new-cassette");
   const issueUrl=ghIssue("Feature request / bug: ","**What would you like?**\n\n**Details / steps:**\n","enhancement");
-  [["addJuke",addUrl],["footAdd",addUrl],["footIssue",issueUrl]].forEach(([id,url])=>{
+  [["footAdd",addUrl],["footIssue",issueUrl]].forEach(([id,url])=>{
     const el=document.getElementById(id); if(!el) return;
     el.href=repoSet?url:"#";
     if(!repoSet) el.addEventListener("click",e=>{e.preventDefault();toast('Set your GitHub repo in the code — REPO = "owner/repo"');});
