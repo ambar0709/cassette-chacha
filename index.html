@@ -147,9 +147,9 @@
   .s-btn:hover{color:var(--ink);border-color:#5a4020}
   .s-btn.close{color:#1a1000;background:linear-gradient(92deg,var(--accent),#fff);border-color:transparent}
   .s-btn.on{color:#1a1000;background:linear-gradient(92deg,#2fd6a0,#bff7e4);border-color:transparent}
-  .stage.minimized .s-btn:not(.restore):not(.close){display:none}
+  .stage.minimized .s-btn:not(.mini-play):not(.restore):not(.close){display:none}
   .stage.minimized .s-btn{padding:8px 10px;font-size:13px}
-  .stage:not(.minimized) .s-btn.restore{display:none}
+  .stage:not(.minimized) .s-btn.restore,.stage:not(.minimized) .s-btn.mini-play{display:none}
   .hint-pill{font-size:12px;color:var(--accent);font-weight:700;padding:6px 12px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:999px;background:color-mix(in srgb,var(--accent) 10%,transparent);white-space:nowrap;animation:pulseHint 1.7s ease-in-out infinite}
   .stage.minimized .hint-pill{display:none}
   @keyframes pulseHint{0%,100%{opacity:.6}50%{opacity:1}}
@@ -277,6 +277,7 @@
     <button class="s-btn" id="sShare" title="Copy this station's link">🔗 Share</button>
     <a class="s-btn" id="sOpen" target="_blank" rel="noopener">Open ↗</a>
     <button class="s-btn" id="sMinimize" title="Minimize player">▁ Minimize</button>
+    <button class="s-btn mini-play" id="sMiniPlay" title="Pause station">Ⅱ</button>
     <button class="s-btn restore" id="sRestore" title="Restore player">▣</button>
     <button class="s-btn close" id="sClose">✕ Close</button>
   </div>
@@ -317,9 +318,10 @@
   const $ = s => document.querySelector(s);
   const grid=$("#grid"), stage=$("#stage"), dock=$("#dock");
   const sFrame=$("#sFrame"), sTitle=$("#sTitle"), sHost=$("#sHost"), sOpen=$("#sOpen"), sHint=$("#sHint"), sLoader=$("#sLoader");
+  const sMiniPlay=$("#sMiniPlay");
   const resumeBtn=$("#resume");
   const stageEqBars=[...document.querySelectorAll("#stageEq i")];
-  let current=null, stageOpen=false, stageMinimized=false, reeling=false;
+  let current=null, stageOpen=false, stageMinimized=false, stagePaused=false, reeling=false;
 
   // ---------- share + submit (GitHub) ----------
   // 👉 Set this to your repo ("owner/repo") to enable the Suggest / Issue links:
@@ -414,7 +416,7 @@
   // ---------- play ----------
   function tune(id){
     const s=SITES.find(x=>x.id===id); if(!s) return;
-    current=id; setTheme(s);
+    current=id; stagePaused=false; updateMiniPlay(); setTheme(s);
     sTitle.textContent=s.title; sHost.textContent=s.host; sOpen.href=s.url; sHint.textContent=s.hint;
     sLoader.classList.remove("hide");
     sFrame.src="about:blank"; setTimeout(()=>{sFrame.src=s.url;},60);
@@ -428,8 +430,32 @@
   }
   sFrame.addEventListener("load",()=>{if(sFrame.src&&sFrame.src!=="about:blank")sLoader.classList.add("hide");});
 
+  function updateMiniPlay(){
+    sMiniPlay.textContent=stagePaused?"▶":"Ⅱ";
+    sMiniPlay.title=stagePaused?"Resume station":"Pause station";
+    sMiniPlay.setAttribute("aria-label",stagePaused?"Resume station":"Pause station");
+  }
+
   function openStageShell(){stage.classList.add("open");stage.classList.remove("minimized");document.body.style.overflow="hidden";stageOpen=true;stageMinimized=false;}
   function openStage(id){openStageShell();tune(id);}
+  function toggleMiniPlayback(){
+    const s=SITES.find(x=>x.id===current); if(!s) return;
+    if(stagePaused){
+      stagePaused=false;
+      updateMiniPlay();
+      sLoader.classList.remove("hide");
+      sFrame.src=s.url;
+      stage.classList.add("playing");
+      toast("▶ Resumed "+s.title);
+    }else{
+      stagePaused=true;
+      updateMiniPlay();
+      sFrame.src="about:blank";
+      sLoader.classList.add("hide");
+      stage.classList.remove("playing");
+      toast("Paused "+s.title);
+    }
+  }
   function minimizeStage(){
     if(!stageOpen) return;
     stage.classList.add("minimized");
@@ -446,7 +472,7 @@
   }
   function closeStage(){
     stage.classList.remove("open","playing","minimized");sFrame.src="about:blank";document.body.style.overflow="";
-    stageOpen=false;stageMinimized=false;current=null;setEmitter(null);history.replaceState(null,"","#");setTheme(SITES[0]);updateResume();
+    stageOpen=false;stageMinimized=false;stagePaused=false;updateMiniPlay();current=null;setEmitter(null);history.replaceState(null,"","#");setTheme(SITES[0]);updateResume();
   }
 
   // ---------- surprise (slot-machine reel) ----------
@@ -454,6 +480,8 @@
     if(reeling) return; reeling=true;
     const pool=SITES.filter(s=>s.id!==current); const target=pool[Math.floor(Math.random()*pool.length)]||SITES[0];
     if(!stageOpen) openStageShell();
+    else if(stageMinimized) restoreStage();
+    stagePaused=false; updateMiniPlay();
     sTitle.textContent="🎲 spinning…"; sHint.textContent=""; sLoader.classList.remove("hide");
     let i=0, delay=55; const steps=16;
     (function step(){
@@ -487,6 +515,7 @@
   dock.addEventListener("click",e=>{const d=e.target.closest(".dock-item");if(d&&d.dataset.id!==current)tune(d.dataset.id);});
   $(".stage-bar").addEventListener("click",e=>{if(stageMinimized&&!e.target.closest(".s-btn"))restoreStage();});
   $("#sMinimize").addEventListener("click",minimizeStage);
+  sMiniPlay.addEventListener("click",toggleMiniPlayback);
   $("#sRestore").addEventListener("click",restoreStage);
   $("#sClose").addEventListener("click",closeStage);
   $("#surprise").addEventListener("click",surprise);
