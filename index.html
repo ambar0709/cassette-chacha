@@ -431,9 +431,9 @@
   sFrame.addEventListener("load",()=>{if(sFrame.src&&sFrame.src!=="about:blank")sLoader.classList.add("hide");});
 
   function updateMiniPlay(){
-    sMiniPlay.textContent=stagePaused?"▶":"Ⅱ";
-    sMiniPlay.title=stagePaused?"Resume station":"Pause station";
-    sMiniPlay.setAttribute("aria-label",stagePaused?"Resume station":"Pause station");
+    sMiniPlay.textContent=stagePaused?"▣":"Ⅱ";
+    sMiniPlay.title=stagePaused?"Restore player":"Pause station";
+    sMiniPlay.setAttribute("aria-label",stagePaused?"Restore player":"Pause station");
   }
 
   function openStageShell(){stage.classList.add("open");stage.classList.remove("minimized");document.body.style.overflow="hidden";stageOpen=true;stageMinimized=false;}
@@ -443,10 +443,12 @@
     if(stagePaused){
       stagePaused=false;
       updateMiniPlay();
+      restoreStage();
       sLoader.classList.remove("hide");
-      sFrame.src=s.url;
+      sFrame.src="about:blank";
+      setTimeout(()=>{sFrame.src=s.url;},60);
       stage.classList.add("playing");
-      toast("▶ Resumed "+s.title);
+      toast("Player restored — press play if needed");
     }else{
       stagePaused=true;
       updateMiniPlay();
